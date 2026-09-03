@@ -1,9 +1,19 @@
+import { useState } from 'react'
 import LoginPage from './LoginPage'
+import HomePage from './HomePage'
 import './App.css'
 
 function App() {
-  return (
-    <LoginPage />
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true)
+  }
+
+  return isLoggedIn ? (
+    <HomePage />
+  ) : (
+    <LoginPage onLoginSuccess={handleLoginSuccess} />
   )
 }
 

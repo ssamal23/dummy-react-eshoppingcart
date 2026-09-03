@@ -60,13 +60,18 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, opacity 0.2s;
 }
 
-.login-button:hover {
+.login-button:hover:not(:disabled) {
   background-color: #45a049;
 }
 
-.login-button:active {
+.login-button:active:not(:disabled) {
   background-color: #3d8b40;
+}
+
+.login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
