@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
-import HomePage from './HomePage';
 
 const VALID_EMAIL = 'ssamal1@evoketechnologies.com';
 const VALID_PASSWORD = 'soumya@123';
 
-const LoginPage: React.FC = () => {
+interface LoginPageProps {
+  onLoginSuccess: () => void;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
       setError('');
-      setIsLoggedIn(true);
+      onLoginSuccess();
     } else {
       setError('Invalid email or password');
       setPassword('');
     }
   };
-
-  if (isLoggedIn) {
-    return <HomePage />;
-  }
 
   return (
     <div className="login-page">
@@ -59,7 +57,7 @@ const LoginPage: React.FC = () => {
             required
           />
         </div>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="login-error">{error}</p>}
         <button type="submit" className="login-button">Login</button>
       </form>
     </div>
