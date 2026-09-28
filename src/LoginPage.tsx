@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 
-const LoginPage: React.FC = () => {
+const VALID_EMAIL = 'ssamal1@evoketechnologies.com';
+const VALID_PASSWORD = 'soumya@123';
+
+interface LoginPageProps {
+  onLoginSuccess: () => void;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Login attempt with:', { email, password });
+
+    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+      setError('');
+      onLoginSuccess();
+    } else {
+      setError('Invalid email or password');
+      setPassword('');
+    }
   };
 
   return (
@@ -20,7 +35,10 @@ const LoginPage: React.FC = () => {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError('');
+            }}
             placeholder="Enter your email"
             required
           />
@@ -31,11 +49,15 @@ const LoginPage: React.FC = () => {
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError('');
+            }}
             placeholder="Enter your password"
             required
           />
         </div>
+        {error && <p className="login-error">{error}</p>}
         <button type="submit" className="login-button">Login</button>
       </form>
     </div>
