@@ -9,6 +9,22 @@
   }
 }
 
+.access-management-header {
+  margin-bottom: 24px;
+}
+
+.access-management-header h1 {
+  color: var(--text-h);
+  font-family: var(--heading);
+}
+
+.access-management-subtitle {
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  margin: 4px 0 0;
+}
+
 .permissions-matrix-container {
   border: 1px solid var(--border);
   border-radius: 8px;

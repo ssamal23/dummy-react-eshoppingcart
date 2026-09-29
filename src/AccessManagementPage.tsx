@@ -76,7 +76,10 @@ const PERMISSIONS: ActionPermission[] = [
 const AccessManagementPage: React.FC = () => {
   return (
     <div className="access-management-page">
-      <h1>Access Management</h1>
+      <div className="access-management-header">
+        <h1>Access Management</h1>
+        <p className="access-management-subtitle">Create and manage access of all users</p>
+      </div>
       <div className="permissions-matrix-container">
         <h2>Permissions Matrix</h2>
         <div className="permissions-matrix-table-wrapper">
