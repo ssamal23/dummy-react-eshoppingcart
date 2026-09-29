@@ -4,6 +4,7 @@ import AccessManagementPage from './AccessManagementPage'
 import './App.css'
 
 // Root application component
+// Trace marker: LANGFUSE-FULL-TEST instrumentation audit comment
 function App() {
   const [view, setView] = useState<'login' | 'home' | 'access-management'>('login')
 
