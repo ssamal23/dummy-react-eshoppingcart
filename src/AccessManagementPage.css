@@ -1,0 +1,66 @@
+.access-management-page {
+  padding: 32px;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .access-management-page {
+    padding: 20px;
+  }
+}
+
+.permissions-matrix-container {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  background: var(--bg);
+}
+
+.permissions-matrix-table-wrapper {
+  overflow-x: auto;
+}
+
+.permissions-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+}
+
+.permissions-matrix-table th,
+.permissions-matrix-table td {
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.permissions-matrix-table thead th {
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-family: var(--heading);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.18px;
+  white-space: nowrap;
+}
+
+.permissions-matrix-table tbody td {
+  color: var(--text);
+  font-size: 16px;
+}
+
+.permissions-matrix-table .action-cell {
+  color: var(--text-h);
+}
+
+.permission-cell {
+  text-align: center;
+}
+
+.permission-granted {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.permission-denied {
+  color: var(--border);
+}
