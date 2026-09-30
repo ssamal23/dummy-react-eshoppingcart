@@ -3,6 +3,7 @@ import './HomePage.css';
 
 interface HomePageProps {
   onLoginSuccess?: () => void;
+  onLogout: () => void;
 }
 
 interface PermissionRow {
@@ -32,7 +33,7 @@ const PERMISSIONS: PermissionRow[] = [
 
 const NAV_ITEMS = ['Users', 'Roles', 'Actions'];
 
-const HomePage: React.FC<HomePageProps> = () => {
+const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
   const [activeNav, setActiveNav] = useState('Actions');
 
   return (
@@ -57,6 +58,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <div className="home-sidebar-footer">
           <button type="button" className="home-nav-item">Audit Management</button>
           <button type="button" className="home-nav-item">Access Management</button>
+          <button type="button" className="home-nav-item" onClick={onLogout}>Logout</button>
           <div className="home-user">
             <span className="home-user-name">IQA - Coordinator</span>
           </div>

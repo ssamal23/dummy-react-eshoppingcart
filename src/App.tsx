@@ -5,16 +5,28 @@ import './App.css'
 
 // Root application component
 function App() {
-  const [view, setView] = useState<'login' | 'home'>('login')
+  const [view, setView] = useState<'login' | 'home'>(() =>
+    localStorage.getItem('isLoggedIn') === 'true' ? 'home' : 'login'
+  )
+
+  const handleLoginSuccess = () => {
+    localStorage.setItem('isLoggedIn', 'true')
+    setView('home')
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn')
+    setView('login')
+  }
 
   if (view === 'home') {
     return (
-      <HomePage />
+      <HomePage onLogout={handleLogout} />
     )
   }
 
   return (
-    <LoginPage onLoginSuccess={() => setView('home')} />
+    <LoginPage onLoginSuccess={handleLoginSuccess} />
   )
 }
 
