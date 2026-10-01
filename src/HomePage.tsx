@@ -31,17 +31,20 @@ const PERMISSIONS: PermissionRow[] = [
   { action: 'Action of audit finding', roles: [true, true, false, false] },
 ];
 
-const NAV_ITEMS = ['Users', 'Roles', 'Actions'];
+const NAV_ITEMS = ['Users', 'Roles', 'Actions', 'Audit Management', 'Access Management'];
 
 const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
   const [activeNav, setActiveNav] = useState('Actions');
 
   return (
-    <div className="login-page home-page">
+    <div className="home-page">
       <aside className="home-sidebar">
         <div className="home-brand">
-          <h2>Audit Flow</h2>
-          <p>Internal Audit Group</p>
+          <span className="home-logo" aria-hidden="true" />
+          <div className="home-brand-text">
+            <h2>Audit Flow</h2>
+            <p>Internal Audit Group</p>
+          </div>
         </div>
         <nav className="home-nav">
           {NAV_ITEMS.map((item) => (
@@ -56,10 +59,9 @@ const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
           ))}
         </nav>
         <div className="home-sidebar-footer">
-          <button type="button" className="home-nav-item">Audit Management</button>
-          <button type="button" className="home-nav-item">Access Management</button>
           <button type="button" className="home-nav-item" onClick={onLogout}>Logout</button>
           <div className="home-user">
+            <span className="home-avatar">SG</span>
             <span className="home-user-name">IQA - Coordinator</span>
           </div>
         </div>
@@ -71,7 +73,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
           <p>Create and manage access of all users</p>
         </header>
 
-        <section className="login-form home-card">
+        <section className="home-card">
           <h2>Permissions Matrix</h2>
           <div className="home-table-wrapper">
             <table className="home-table">
